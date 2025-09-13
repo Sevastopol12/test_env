@@ -7,7 +7,7 @@ from datetime import date, timedelta
 
 
 class db_settings:
-    connection_string = os.getenv["DATABASE_URI"]
+    connection_string = os.getenv("DATABASE_URI")
     conn = create_engine(url=connection_string)
 
 
