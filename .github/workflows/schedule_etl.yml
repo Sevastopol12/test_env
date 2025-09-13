@@ -1,0 +1,28 @@
+name: Scheduled ETL -> Neon
+on:
+  schedule:
+    - cron: "*/10 * * * *" # every 3am (UTC); change cron to suit your schedule
+  workflow_dispatch: {}
+
+jobs:
+  run-etl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install uv
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Sync dependencies
+        run: uv sync
+
+      - name: Run etl
+        env:
+          DATABASE_URI: ${{ secrets.DATABASE_URI }}
+        run: uv run python etl.py

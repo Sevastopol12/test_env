@@ -1,0 +1,24 @@
+{
+  "name": "NeonDB Worker",
+
+  // Install uv globally
+  "postCreateCommand": "pip install uv && uv sync",
+
+  // Environment variables (will be overridden by secrets in Codespaces)
+  "remoteEnv": {
+    "DATABASE_URL": "${localEnv:DATABASE_URI}"
+  },
+
+  // Optional: mount your local .venv if not using uv
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  }
+}
