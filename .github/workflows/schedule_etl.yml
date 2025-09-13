@@ -25,4 +25,4 @@ jobs:
       - name: Run etl
         env:
           DATABASE_URI: ${{ secrets.DATABASE_URI }}
-        run: uv run python etl.py
+        run: uv run python test_env/etl.py
