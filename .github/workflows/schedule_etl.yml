@@ -1,7 +1,7 @@
 name: Scheduled ETL -> Neon
 on:
   schedule:
-    - cron: "* * * * *" # every 3am (UTC); change cron to suit your schedule
+    - cron: " 0 12 * * *" # every 12pm (UTC)
   workflow_dispatch: {}
 
 jobs:
